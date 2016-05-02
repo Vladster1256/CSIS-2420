@@ -25,6 +25,7 @@
 
 package symbolTable;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 import edu.princeton.cs.algs4.Queue;
@@ -69,6 +70,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     private Key[] keys;
     private Value[] vals;
     private int N = 0;
+    private Key temp;
 
     /**
      * Initializes an empty symbol table.
@@ -415,21 +417,26 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      */
     public static void main(String[] args) { 
     	String[] keyArray = {"S","E","A","R","C","H","E","X","A","M","P","L","E"};
+    	Arrays.sort(keyArray);
         BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>();
         
         for (int i = 0; i < keyArray.length ; i++) {
             String key = keyArray[i];
             st.put(key, i);
         }
-        for (String s : st.keys())
-            StdOut.println(s + " " + st.get(s));
+       // for (String s : st.keys())
+           // StdOut.println(s + " " + st.get(s));
         
-        StdOut.println(st.min());
-        StdOut.println(st.max());
-        StdOut.println(st.rank("E"));
-        StdOut.println(st.rank("A"));
-        StdOut.println(st.rank("C"));
-        StdOut.println(st.rank("H"));
+        StdOut.println(st.floor("A"));
+        
+        StdOut.println(st.rank(st.floor("A")));
+        StdOut.println(st.rank(st.ceiling("S")));
+        //StdOut.println(st.min());
+        //StdOut.println(st.max());
+        //StdOut.println(st.rank("E"));
+        //StdOut.println(st.rank("A"));
+        //StdOut.println(st.rank("C"));
+        //StdOut.println(st.rank("H"));
     }
 }
 
